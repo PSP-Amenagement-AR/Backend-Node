@@ -28,7 +28,7 @@ const options = {
         }
       ]
     },
-    apis: []
+    apis: ['./src/controllers/*.js', './src/models/*.js'],
 };
 
 const specs = swaggerJsdoc(options);
