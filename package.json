@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
+    "lint": "eslint '**/*.js'",
     "test:coveralls": "jest --coverage && cat ./coverage/lcov.info"
   },
   "repository": {
