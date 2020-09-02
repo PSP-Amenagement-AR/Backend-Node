@@ -4,7 +4,7 @@ language: node_js
 
 node_js:
   - 10
-  - node  # latest version
+  #- node  # latest version
 
 install:
   - npm ci # clean install
