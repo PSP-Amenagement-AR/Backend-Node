@@ -7,9 +7,13 @@ node_js:
   - node  # latest version
 
 install:
-  - npm ci
+  - npm ci # clean install
 
 script:
-  - npm test
+  - npm run lint
+  - npm run test:coveralls
+
+notifications:
+  email: false
 
 ## unit test: Jest and SuperTest
