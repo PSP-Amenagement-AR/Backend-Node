@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/user');
 const createToken = require('../utils/token');
+const ErrorHandler = require('../utils/errorHandler');
+const { SERVER_ERROR, USER_NOT_FOUND } = require('../messages');
 
 const accessTokenSecret = 'youraccesstokensecret';
 
@@ -41,12 +43,12 @@ module.exports = {
 
     userModel.create({ email: email.toLowerCase(), password: bcrypt.hashSync(password, 10) }, (err, result) => {
       if (err) {
-        return res.status(500).json({ message: 'Server Error' });
+        return next(new ErrorHandler(500, SERVER_ERROR));
       }
       res.status(200).json(result);
     });
   },
-  
+
     /**
    * @swagger
    * path:
@@ -89,7 +91,7 @@ module.exports = {
           const token = createToken(user);
           userModel.findByIdAndUpdate({_id: result._id}, {token: token}, function(err, doc){
             if(err){
-                console.log("Something wrong when updating data!");
+              return next(new ErrorHandler(500, SERVER_ERROR));
             }
         });
           res.json({
@@ -99,10 +101,10 @@ module.exports = {
       }
       else
       {
-        res.status(404).json({message: "User not found"});
+        next(new ErrorHandler(404, USER_NOT_FOUND));
       }
     });
-    
+
   },
 
 };
