@@ -18,5 +18,10 @@ services:
     expose:
       - "27017"
 
+  frontend:
+    build: Frontend
+    ports:
+      - "4200:4200"
+
 volumes:
   db_data:

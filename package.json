@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "lint": "eslint '**/*.js'",
     "test:coveralls": "jest --coverage && cat ./coverage/lcov.info"
