@@ -10,7 +10,7 @@ install:
   - npm ci # clean install
 
 script:
-  - npm run lint
+  #- npm run lint
   - npm run test:coveralls
 
 notifications:
