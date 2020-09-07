@@ -24,9 +24,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({ message });
 });
 
-app.listen(port, () => console.log(`Listening on port : ${port}`));
-
 if (process.env.NODE_ENV !== 'test') {
+
+  app.listen(port, () => console.log(`Listening on port : ${port}`));
 
   mongoose.connect('mongodb://localhost:27017/ARAmenagement', {
     useNewUrlParser: true,
