@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test:coveralls": "jest --coverage && cat ./coverage/lcov.info",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
