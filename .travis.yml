@@ -1,16 +1,16 @@
-#sudo: false
-#
-#language: node_js
-#
-#node_js:
-#  - 10
-#  - node  # latest version
-#
-#install:
-#  - npm ci
-#
-#script:
-#  - npm run test:coveralls
-#
-#notifications:
-#  email: false
+sudo: false
+
+language: node_js
+
+node_js:
+  - 10
+  - node  # latest version
+
+install:
+  - npm ci
+
+script:
+  - npm run test:coveralls
+
+notifications:
+  email: false
