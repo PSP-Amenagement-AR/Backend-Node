@@ -35,6 +35,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  token: {
+    type: String,
+  }
 
 }, { collection: 'users', autoCreate: true });
 
