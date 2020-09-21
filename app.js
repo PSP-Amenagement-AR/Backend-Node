@@ -2,14 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const config = require('./config');
 
 const router = require('./src/router');
 const ErrorHandler = require('./src/utils/errorHandler');
 const { NOT_FOUND } = require('./src/messages');
 
 const app = express();
-
-const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -24,11 +23,11 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({ message });
 });
 
-if (process.env.NODE_ENV !== 'test') {
+if (config.nodeEnv !== 'test') {
 
-  app.listen(port, () => console.log(`Listening on port : ${port}`));
+  app.listen(config.port, () => console.log(`Listening on port : ${config.port}`));
 
-  mongoose.connect('mongodb://localhost:27017/ARAmenagement', {
+  mongoose.connect(config.mongodb, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

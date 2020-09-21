@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const accessTokenSecret = 'youraccesstokensecret';
+const config = require('./../../config');
 
 function createToken(user)
 {
-    return jwt.sign({ email: user.email,  id: user._id }, accessTokenSecret);
+    return jwt.sign({ email: user.email,  id: user._id }, config.secretKey);
 }
 
 module.exports = createToken;
