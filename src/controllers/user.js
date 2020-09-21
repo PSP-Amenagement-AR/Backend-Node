@@ -4,8 +4,7 @@ const userModel = require('../models/user');
 const createToken = require('../utils/token');
 const ErrorHandler = require('../utils/errorHandler');
 const { SERVER_ERROR, USER_NOT_FOUND } = require('../messages');
-
-const accessTokenSecret = 'youraccesstokensecret';
+const config = require('./../../config');
 
 /**
  * @swagger
@@ -41,7 +40,7 @@ module.exports = {
   create(req, res, next) {
     const { email, password } = req.body;
 
-    userModel.create({ email: email.toLowerCase(), password: bcrypt.hashSync(password, 10) }, (err, result) => {
+    userModel.create({ email: email.toLowerCase(), password: bcrypt.hashSync(password, config.saltValue) }, (err, result) => {
       if (err) {
         return next(new ErrorHandler(500, SERVER_ERROR));
       }
@@ -64,7 +63,7 @@ module.exports = {
    *              $ref: '#/components/schemas/User'
    *      responses:
    *        "200":
-   *          description: A user schema
+   *          description: A token
    *          content:
    *            application/json:
    *              schema:
@@ -80,7 +79,7 @@ module.exports = {
 
         try
         {
-          jwt.verify(result.token, accessTokenSecret);
+          jwt.verify(result.token, config.secretKey);
           const token = result.token;
           res.json({
             token
