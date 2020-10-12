@@ -12,6 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use('/files', express.static(config.baseFilePath));
 app.use(router);
 
 app.all('*', (req, res, next) => {
