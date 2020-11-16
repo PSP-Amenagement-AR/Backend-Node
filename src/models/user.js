@@ -19,9 +19,20 @@ const { Schema } = mongoose;
  *          password:
  *            type: string
  *            description: Password for the user
+ *          firstName:
+ *            type: string
+ *            description: User firstname
+ *          lastName:
+ *            type: string
+ *            description: User lastname
+ *          admin:
+ *            type: boolean
+ *            description: Is the user an admin or not
  *        example:
  *           email: fake@email.com
  *           password: fakepwd
+ *           firstName: Foo
+ *           lastName: Bar
  */
 
 const userSchema = new Schema({
@@ -34,6 +45,17 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  admin: {
+    type: Boolean,
+    required: true,
+    default: false
   },
   token: {
     type: String,
