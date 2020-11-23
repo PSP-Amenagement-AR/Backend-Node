@@ -26,9 +26,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Clean Install
       run: npm ci
-    - name: Build
-      run: npm run build --if-present
-    - name: test
-      run: npm test
+    # - name: Build
+    #  run: npm run build --if-present
+    # - name: test
+    #  run: npm test
+    - name: Run Docker Compose
+      run: docker-compose up
     #- name: deploy
     #  run: pm2 deploy production setup
