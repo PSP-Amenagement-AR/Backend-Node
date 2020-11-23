@@ -99,7 +99,10 @@ module.exports = {
           jwt.verify(result.token, config.secretKey);
           const token = result.token;
           res.json({
-            token
+            token,
+            id: result._id,
+            firstName: result.firstName,
+            lastName: result.lastName,
           });
         }
         catch(error)
@@ -111,7 +114,10 @@ module.exports = {
             }
         });
           res.json({
-            token
+            token,
+            id: result._id,
+            firstName: result.firstName,
+            lastName: result.lastName,
           });
         }
       }
@@ -126,16 +132,16 @@ module.exports = {
   /**
    * @swagger
    * path:
-   *  /users/disconnect:
+   *  /users/disconnect/:
    *    get:
    *      summary: Disconnect user
    *      tags: [Users]
-   *      requestBody:
-   *        required: true
-   *        content:
-   *          application/json:
-   *            schema:
-   *              $ref: '#/components/schemas/User'
+   *      parameters:
+   *        - in: header
+   *          name: Authorization
+   *          schema:
+   *            type: String
+   *          description: Token returned by login
    *      responses:
    *        "204":
    *          description: Disconnect successful
@@ -152,12 +158,20 @@ module.exports = {
   /**
    * @swagger
    * path:
-   *  /users/:id:
+   *  /users/{id}:
    *    put:
    *      summary: Update user (admin only)
    *      tags: [Users]
+   *      parameters:
+   *        - in: header
+   *          name: Authorization
+   *          schema:
+   *            type: String
+   *          description: Token returned by login
+   *        - in path:
+   *          name: id
+   *          description: User id
    *      requestBody:
-   *        required: true
    *        content:
    *          application/json:
    *            schema:
@@ -191,6 +205,12 @@ module.exports = {
    *    put:
    *      summary: Update user
    *      tags: [Users]
+   *      parameters:
+   *        - in: header
+   *          name: Authorization
+   *          schema:
+   *            type: String
+   *          description: Token returned by login
    *      requestBody:
    *        required: true
    *        content:
@@ -221,16 +241,19 @@ module.exports = {
   /**
    * @swagger
    * path:
-   *  /users/:id:
+   *  /users/{id}:
    *    delete:
    *      summary: Delete user
    *      tags: [Users]
-   *      requestBody:
-   *        required: true
-   *        content:
-   *          application/json:
-   *            schema:
-   *              $ref: '#/components/schemas/User'
+   *      parameters:
+   *        - in: header
+   *          name: Authorization
+   *          schema:
+   *            type: String
+   *          description: Token returned by login
+   *        - in path:
+   *          name: id
+   *          description: User id
    *      responses:
    *        "204":
    *          description: User successfuly deleted

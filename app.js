@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./config');
 
+const config = require('./config');
 const router = require('./src/router');
 const ErrorHandler = require('./src/utils/errorHandler');
+const createFirstAdmin = require('./src/utils/createFirstAdmin');
 const { NOT_FOUND } = require('./src/messages');
 
 const app = express();
@@ -37,6 +38,7 @@ if (config.nodeEnv !== 'test') {
       console.log('Database error');
       process.exit(1);
     }
+    createFirstAdmin();
   });
 
 }
