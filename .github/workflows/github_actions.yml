@@ -30,5 +30,7 @@ jobs:
       run: npm run build --if-present
     - name: test
       run: npm test
+    - name: Build Container
+      run: docker-compose up -d
     #- name: deploy
     #  run: pm2 deploy production setup
