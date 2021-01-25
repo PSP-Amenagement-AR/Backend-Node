@@ -1,7 +1,7 @@
 const config = {};
 
 config.secretKey = process.env.SECRETKEY || "defaultSecretKey";
-config.mongodb = process.env.MONGODB || "mongodb://localhost:27017/ARAmenagement";
+config.mongodb = process.env.MONGODB || "mongodb+srv://BoboLapin:BoboLapin@aramenagementcluster.nh7o8.mongodb.net/data?retryWrites=true&w=majority";
 config.nodeEnv = process.env.NODE_ENV || "dev";
 config.saltValue = process.env.SALTVALUE || 10;
 config.port = process.env.PORT || 3000;
