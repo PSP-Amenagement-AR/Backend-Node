@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const jwt = require('jsonwebtoken');
 
+const config = require('../config');
+
 const mongod = new MongoMemoryServer();
 
 module.exports.connect = async () => {
@@ -17,5 +19,10 @@ module.exports.closeDatabase = async () => {
 };
 
 module.exports.generateToken = (user) => {
-  return jwt.sign({ email: user.email, _id: user._id }, 'secret')
+  return jwt.sign({ email: user.email, _id: user._id }, config.secretKey);
+};
+
+module.exports.loginUserHelper = (request, app) => async (email, password) => {
+  const response = await request(app).post('/users/login').send({ email, password });
+  return response.body.token;
 };

@@ -18,7 +18,7 @@ describe('Login tests', () => {
 
   beforeAll(async () => {
     helper.connect();
-    server = app.listen(3000);
+    server = app.listen(3001);
     user = new userModel({ email: 'user@test.com', password: bcrypt.hashSync(userPwd, config.saltValue), fisrtName: 'foo', lastName: 'bar' });
     adminUser = new userModel({ email: 'admin@admin.com', password: bcrypt.hashSync('admin', config.saltValue), fisrtName: 'foo', lastName: 'bar', admin: true });
     user.save();
