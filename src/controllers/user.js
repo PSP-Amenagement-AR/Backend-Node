@@ -256,7 +256,7 @@ module.exports = {
    *          description: User id
    *      responses:
    *        "204":
-   *          description: User successfuly deleted
+   *          description: User successfully deleted
    */
   delete(req, res, next) {
     const id = req.params.id;
