@@ -5,7 +5,7 @@ const { defaultAdmin, saltValue } = require('../../config');
 
 const createFirstAdmin = () => {
   const userInfos = {...defaultAdmin};
-  userModel.findOne({ Admin: true }, (err, user) => {
+  userModel.findOne({ admin: true }, (err, user) => {
     if (err) {
       process.exit(1);
     }
