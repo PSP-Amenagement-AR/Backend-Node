@@ -1,7 +1,7 @@
 const config = {};
 
 config.secretKey = process.env.SECRETKEY || "ProductionSecretKey";
-config.mongodb = process.env.MONGODB || "mongodb+srv://BoboLapin:BoboLapin@aramenagementcluster.nh7o8.mongodb.net/data?retryWrites=true&w=majority";
+config.mongodb = process.env.MONGODB || "mongodb+srv://BoboLapin:BoboLapin@aramenagementcluster.nh7o8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 config.saltValue = process.env.SALTVALUE || 10;
 config.port = process.env.PORT || 3000;
 config.baseFilePath = process.env.BASE_FILE_PATH || "./files";
