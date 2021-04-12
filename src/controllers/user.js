@@ -84,7 +84,17 @@ module.exports = {
    *          content:
    *            application/json:
    *              schema:
-   *                $ref: '#/components/schemas/User'
+   *                type: object
+   *                properties:
+   *                  token:
+   *                    type: string
+   *                    description: token
+   *                  firstName:
+   *                    type: string
+   *                    description: First name of the user
+   *                  lastName:
+   *                    type: string
+   *                    description: Last name of the user
    */
   login(req, res, next) {
     const { email, password} = req.body;
