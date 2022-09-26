@@ -27,7 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb-memory-server": "^6.6.7",
     "mongoose": "^5.10.2",
-    "pm2": "^4.4.1",
+    "pm2": "^5.2.0",
     "supertest": "^4.0.2",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
